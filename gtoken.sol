@@ -1,11 +1,11 @@
-/ SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
 contract MyToken {
 
     // public variables here
-    string public tokenName = "Ratheesh";
-    string public tokenAbbrv = "RTH";
+    string public tokenName = "Token NAme";
+    string public tokenAbbrv = "short name";
     uint public totalSupply = 0;
 
     // mapping variable here
@@ -16,11 +16,10 @@ contract MyToken {
         totalSupply+=_value;
         balances[_address]+=_value;
     }
+function burn(address _address, uint _value) public {
+    require(balances[_address] >= _value, "Insufficient balance");
+    totalSupply -= _value;
+    balances[_address] -= _value;
+}
 
-    // burn function
-    function burn(address _address, uint _value)public {
-        totalSupply-=_value;
-        balances[_address]-=_value;
-    }
 
-} 
